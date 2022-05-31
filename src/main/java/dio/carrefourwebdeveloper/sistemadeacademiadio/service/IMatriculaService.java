@@ -1,4 +1,4 @@
-package dio.carrefourwebdeveloper.sistemadeacademiadio.service.impl;
+package dio.carrefourwebdeveloper.sistemadeacademiadio.service;
 
 import java.util.List;
 

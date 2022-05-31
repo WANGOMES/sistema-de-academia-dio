@@ -1,9 +1,10 @@
-package dio.carrefourwebdeveloper.sistemadeacademiadio.service.impl;
+package dio.carrefourwebdeveloper.sistemadeacademiadio.service;
 
 import java.util.List;
 
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.Aluno;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoForm;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoUpdateForm;
 
 public interface IAlunoService {
 
@@ -13,7 +14,7 @@ public interface IAlunoService {
 
     List<Aluno> getAll();
 
-    Aluno update(Long id, AlunoForm form);
+    Aluno update(Long id, AlunoUpdateForm form);
 
     void delete(Long id);
 
