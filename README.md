@@ -1,53 +1,56 @@
-# sistema-de-academia-dio
+# Sistema de Academia DIO
 Sistema de Academia com Spring Desafio de Projeto - DIO - Carrefour Web Developer.
 
-## #DesafioDeProjetoDIO #CarrefourWebDeveloper
+### `#DesafioDeProjetoDIO` `#CarrefourWebDeveloper`
 
-# Tecnologias utilizadas:
+# Tecnologias utilizadas
 
 ### `VS Code`
-[Saiba mais](https://code.visualstudio.com/download)
+[code.visualstudio.com](https://code.visualstudio.com/download)
 
 ### `Spring initializr`
-[Link](https://start.spring.io/)
+[start.spring.io](https://start.spring.io/)
+
+### `SGBD PostgreSQL`
+[postgresql.org](https://www.postgresql.org/download/)
+
+### `Postman`
+[postman.com](https://www.postman.com/)
 
 # Dados do projeto
-**Project:** Maven
-**Language:** Java
-**SpringBoot version:** 2,7.0
-**Packaging:** Jar
-**Java version:** 17
-**Dependencies:**
+**_Project:_** Maven
+
+**_Language:_** Java
+
+**_SpringBoot version:_** 2.7.0
+
+**_Packaging:_** Jar
+
+**_Java version:_** 17
+
+**_Dependencies:_**
 - Spring Web
 - PostgreSQL Driver
 - Spring Data JPA
 - Hibernate Validator
 - Lombok
 
-[Spring.io](https://spring.io/guides)
+[spring.io/guides](https://spring.io/guides)
 
-### `SGBD PostgreSQL`
-[Link](https://www.postgresql.org/download/)
+## Acessando o banco de dados pelo terminal
+**Comandos uteis:**
 
-### `Postman`
-[Link](https://www.postman.com/)
+psql -U **_user_** -d **_db_**
 
-## Como acessar o Banco de dados pelo terminal?
-`Comandos uteis:`
-        psql -U <user> -d <db>
-        psql --version
-        psql --help
+psql --version
+
+psql --help
         
-No Banco de dados:
-- listar os bancos:
-        \l
-- listar usuários:
-        \du
-- listar tabelas:
-        \dt
-- alterar bancos:
-        \c nome_do_banco
-- informações da Conexão:
-        \conninfo
+**No banco de dados:**
+- **listar os bancos:** \l
+- **listar usuários:**  \du
+- **listar tabelas:**   \dt
+- **alterar bancos:**   \c nome_do_banco
+- **informações da Conexão:** \conninfo
 
 
