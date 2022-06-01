@@ -1,16 +1,18 @@
-package me.dio.academia.digital.infra.jackson;
+package dio.carrefourwebdeveloper.sistemadeacademiadio.infra.jackson;
 
-import com.fasterxml.jackson.databind.SerializationFeature;
-import me.dio.academia.digital.infra.jackson.deser.LocalDateDeserializer;
-import me.dio.academia.digital.infra.jackson.deser.LocalDateTimeDeserializer;
-import me.dio.academia.digital.infra.jackson.ser.LocalDateSerializer;
-import me.dio.academia.digital.infra.jackson.ser.LocalDateTimeSerializer;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
+import dio.carrefourwebdeveloper.sistemadeacademiadio.infra.jackson.deser.LocalDateDeserializer;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.infra.jackson.deser.LocalDateTimeDeserializer;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.infra.jackson.ser.LocalDateSerializer;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.infra.jackson.ser.LocalDateTimeSerializer;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.databind.SerializationFeature;
 
 /**
  * @author Venilton Falvo Jr

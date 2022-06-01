@@ -3,6 +3,7 @@ package dio.carrefourwebdeveloper.sistemadeacademiadio.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.Aluno;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.AvaliacaoFisica;
@@ -12,7 +13,8 @@ import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.AlunoRepository
 import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.AvaliacaoFisicaRepository;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.service.IAvaliacaoFisicaService;
 
-public class AvaliacaoFisicaImpl implements IAvaliacaoFisicaService{
+@Service
+public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService{
 
     @Autowired
     private AvaliacaoFisicaRepository repository;
@@ -22,8 +24,13 @@ public class AvaliacaoFisicaImpl implements IAvaliacaoFisicaService{
 
     @Override
     public AvaliacaoFisica create(AvaliacaoFisicaForm form) {
-        // TODO Auto-generated method stub
-        return null;
+        AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica();
+        Aluno aluno = alunoRepository.findById(form.getIdAluno()).get();
+        avaliacaoFisica.setAluno(aluno);
+        avaliacaoFisica.setPeso(form.getPeso());
+        avaliacaoFisica.setAltura(form.getAltura());
+
+        return repository.save(avaliacaoFisica);
     }
 
     @Override

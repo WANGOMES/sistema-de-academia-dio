@@ -7,6 +7,7 @@ import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.stereotype.Service;
 
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.Aluno;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.AvaliacaoFisica;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoForm;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoUpdateForm;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.AlunoRepository;
@@ -24,14 +25,14 @@ public class AlunoServiceImpl implements IAlunoService{
         aluno.setNome(form.getNome());
         aluno.setCpf(form.getCpf());
         aluno.setBairro(form.getBairro());
-        aluno.setDataDeNascimento(form.getDataDeNascimento())
+        aluno.setDataDeNascimento(form.getDataDeNascimento());
 
         return repository.save(aluno);
     }
 
     @Override
     public Aluno get(Long id) {
-        return repository.getReferenceById(id);
+        return repository.findById(id).get();
     }
 
     @Override
@@ -45,7 +46,7 @@ public class AlunoServiceImpl implements IAlunoService{
         Aluno aluno = new Aluno();
         aluno.setNome(form.getNome());
         aluno.setBairro(form.getBairro());
-        aluno.setDataDeNascimento(form.getDataDeNascimento())
+        aluno.setDataDeNascimento(form.getDataDeNascimento());
         return repository.save(aluno);
     }
 
@@ -54,5 +55,12 @@ public class AlunoServiceImpl implements IAlunoService{
         Aluno aluno = new Aluno();
         aluno = get(id);
         repository.delete(aluno);
+    }
+
+    @Override
+    public List<AvaliacaoFisica> getAllAvaliacaoFisicas(long id) {
+        Aluno aluno = repository.findById(id).get();
+        return aluno.getAvaliacoes();
+        
     }
 }

@@ -1,12 +1,13 @@
-package me.dio.academia.digital.infra.jackson.ser;
+package dio.carrefourwebdeveloper.sistemadeacademiadio.infra.jackson.ser;
+
+import java.io.IOException;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import me.dio.academia.digital.infra.utils.JavaTimeUtils;
 
-import java.io.IOException;
-import java.time.LocalDate;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.infra.utils.JavaTimeUtils;
 
 /**
  * @author Venilton Falvo Jr
