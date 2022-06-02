@@ -33,12 +33,12 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public Aluno update(@RequestBody Long id, AlunoUpdateForm form){
+    public Aluno update(@PathVariable Long id, AlunoUpdateForm form){
         return service.update(id, form);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@RequestBody Long id){
+    public void delete(@PathVariable Long id){
         service.delete(id);
     }
     @GetMapping("/avaliacoes/{id}")
@@ -46,10 +46,9 @@ public class AlunoController {
         return service.getAllAvaliacaoFisicas(id);
     }
 
-    @GetMapping("/avaliacoes/{id}/count")
-    public Integer getCountAvaliacoesFisicas(@PathVariable Long id){
-        List<AvaliacaoFisica> avaliacoes = getAllAvaliacaoFisicas(id);
-        return avaliacoes.size();
+    @GetMapping("/avaliacoes/total/{id}")
+    public int getTotalAvaliacoesFisicas(@PathVariable Long id){
+        return service.getTotalAvaliacoesFisicas(id);
     }
 
 }

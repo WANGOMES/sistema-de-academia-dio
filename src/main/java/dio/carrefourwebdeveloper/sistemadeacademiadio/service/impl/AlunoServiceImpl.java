@@ -3,7 +3,6 @@ package dio.carrefourwebdeveloper.sistemadeacademiadio.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.RepositoryDefinition;
 import org.springframework.stereotype.Service;
 
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.Aluno;
@@ -11,6 +10,7 @@ import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.AvaliacaoFisica;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoForm;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoUpdateForm;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.AlunoRepository;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.AvaliacaoFisicaRepository;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.service.IAlunoService;
 
 @Service
@@ -19,6 +19,9 @@ public class AlunoServiceImpl implements IAlunoService{
     @Autowired
     private AlunoRepository repository;
 
+    @Autowired
+    private AvaliacaoFisicaRepository avaliacaoRepository;
+
     @Override
     public Aluno create(AlunoForm form) {
         Aluno aluno = new Aluno();
@@ -26,7 +29,6 @@ public class AlunoServiceImpl implements IAlunoService{
         aluno.setCpf(form.getCpf());
         aluno.setBairro(form.getBairro());
         aluno.setDataDeNascimento(form.getDataDeNascimento());
-
         return repository.save(aluno);
     }
 
@@ -52,8 +54,11 @@ public class AlunoServiceImpl implements IAlunoService{
 
     @Override
     public void delete(Long id) {
-        Aluno aluno = new Aluno();
-        aluno = get(id);
+        Aluno aluno = repository.findById(id).get();
+        List<AvaliacaoFisica> avaliacoes = aluno.getAvaliacoes();
+        for (AvaliacaoFisica avaliacaoFisica : avaliacoes) {
+            avaliacaoRepository.deleteById(avaliacaoFisica.getId());
+        }
         repository.delete(aluno);
     }
 
@@ -61,6 +66,10 @@ public class AlunoServiceImpl implements IAlunoService{
     public List<AvaliacaoFisica> getAllAvaliacaoFisicas(long id) {
         Aluno aluno = repository.findById(id).get();
         return aluno.getAvaliacoes();
-        
+    }
+
+    public int getTotalAvaliacoesFisicas(long id) {
+        Aluno aluno = repository.findById(id).get();
+        return aluno.getAvaliacoes().size();
     }
 }

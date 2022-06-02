@@ -35,12 +35,7 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService{
 
     @Override
     public AvaliacaoFisica get(Long id) {
-        Aluno aluno = alunoRepository.getReferenceById(id);
-        return repository.getReferenceById(id);
-        /*
-        *  verificar código
-        *
-        */
+        return repository.findById(id).get();
     }
 
     @Override
@@ -50,14 +45,15 @@ public class AvaliacaoFisicaServiceImpl implements IAvaliacaoFisicaService{
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
-        
+        repository.deleteById(id);
     }
 
     @Override
     public AvaliacaoFisica update(Long id, AvaliacaoFisicaUpdateForm form) {
-        // TODO Auto-generated method stub
-        return null;
+        AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica();
+        avaliacaoFisica.setPeso(form.getPeso());
+        avaliacaoFisica.setAltura(form.getAltura());
+        return repository.save(avaliacaoFisica);
     }
     
 }
