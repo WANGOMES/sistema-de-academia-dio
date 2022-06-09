@@ -2,6 +2,8 @@ package dio.carrefourwebdeveloper.sistemadeacademiadio.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +26,7 @@ public class AlunoController {
     }
 
     @PostMapping
-    public Aluno create(@RequestBody AlunoForm form){
+    public Aluno create(@Valid @RequestBody AlunoForm form){
         return service.create(form);
     }
     @GetMapping("/{id}")
@@ -33,7 +35,7 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public Aluno update(@PathVariable Long id, AlunoUpdateForm form){
+    public Aluno update(@PathVariable Long id,@Valid AlunoUpdateForm form){
         return service.update(id, form);
     }
 
@@ -49,6 +51,11 @@ public class AlunoController {
     @GetMapping("/avaliacoes/total/{id}")
     public int getTotalAvaliacoesFisicas(@PathVariable Long id){
         return service.getTotalAvaliacoesFisicas(id);
+    }
+
+    @GetMapping("/{bairro}")
+    public List<Aluno> findByAlunosPorBairro(@PathVariable String bairro){
+        return service.findByAlunosPorBairro(bairro);
     }
 
 }

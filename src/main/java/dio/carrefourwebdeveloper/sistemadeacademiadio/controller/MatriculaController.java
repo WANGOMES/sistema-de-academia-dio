@@ -2,6 +2,8 @@ package dio.carrefourwebdeveloper.sistemadeacademiadio.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,7 @@ public class MatriculaController {
     private MatriculaServiceImpl service;
 
     @PostMapping
-    public Matricula create(@RequestBody MatriculaForm form){
+    public Matricula create(@Valid @RequestBody MatriculaForm form){
         return service.create(form);
     }
 

@@ -21,6 +21,6 @@ public interface IAlunoService {
 
     List<AvaliacaoFisica> getAllAvaliacaoFisicas(long id);
 
-
-    
+    public List<Aluno> findByAlunosPorBairro(String bairro);
+        
 }
