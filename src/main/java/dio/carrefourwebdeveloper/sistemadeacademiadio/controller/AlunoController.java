@@ -35,7 +35,7 @@ public class AlunoController {
     }
 
     @PutMapping("/{id}")
-    public Aluno update(@PathVariable Long id,@Valid AlunoUpdateForm form){
+    public Aluno update(@PathVariable Long id,@Valid @RequestBody AlunoUpdateForm form){
         return service.update(id, form);
     }
 
@@ -53,9 +53,9 @@ public class AlunoController {
         return service.getTotalAvaliacoesFisicas(id);
     }
 
-    @GetMapping("/{bairro}")
-    public List<Aluno> findByAlunosPorBairro(@PathVariable String bairro){
-        return service.findByAlunosPorBairro(bairro);
-    }
+    // @GetMapping("/{bairro}")
+    // public List<Aluno> findAlunosPorBairro(@PathVariable String bairro){
+    //     return service.findAlunosPorBairro(bairro);
+    // }
 
 }

@@ -7,5 +7,6 @@ import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.AvaliacaoFisica;
 
 @Repository
 public interface AvaliacaoFisicaRepository extends JpaRepository<AvaliacaoFisica, Long>{
-    
+
+        
 }

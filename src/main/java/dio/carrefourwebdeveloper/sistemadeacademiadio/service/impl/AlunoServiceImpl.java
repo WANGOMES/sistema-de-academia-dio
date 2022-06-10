@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.Aluno;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.AvaliacaoFisica;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.Matricula;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoForm;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form.AlunoUpdateForm;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.AlunoRepository;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.AvaliacaoFisicaRepository;
+import dio.carrefourwebdeveloper.sistemadeacademiadio.repository.MatriculaRepository;
 import dio.carrefourwebdeveloper.sistemadeacademiadio.service.IAlunoService;
 
 @Service
@@ -21,6 +23,9 @@ public class AlunoServiceImpl implements IAlunoService{
 
     @Autowired
     private AvaliacaoFisicaRepository avaliacaoRepository;
+
+    @Autowired
+    private MatriculaRepository matriculaRepository;
 
     @Override
     public Aluno create(AlunoForm form) {
@@ -45,7 +50,7 @@ public class AlunoServiceImpl implements IAlunoService{
 
     @Override
     public Aluno update(Long id, AlunoUpdateForm form) {
-        Aluno aluno = new Aluno();
+        Aluno aluno = repository.findById(id).get();
         aluno.setNome(form.getNome());
         aluno.setBairro(form.getBairro());
         aluno.setDataDeNascimento(form.getDataDeNascimento());
@@ -56,8 +61,15 @@ public class AlunoServiceImpl implements IAlunoService{
     public void delete(Long id) {
         Aluno aluno = repository.findById(id).get();
         List<AvaliacaoFisica> avaliacoes = aluno.getAvaliacoes();
+        Matricula matricula = matriculaRepository.findByAlunoId(aluno.getId());
+        if(matricula != null){
+            matriculaRepository.delete(matricula);
+        }
+        
         for (AvaliacaoFisica avaliacaoFisica : avaliacoes) {
-            avaliacaoRepository.deleteById(avaliacaoFisica.getId());
+            if(avaliacaoFisica != null){
+                avaliacaoRepository.delete(avaliacaoFisica);
+            }
         }
         repository.delete(aluno);
     }
@@ -73,7 +85,7 @@ public class AlunoServiceImpl implements IAlunoService{
         return aluno.getAvaliacoes().size();
     }
 
-    public List<Aluno> findByAlunosPorBairro(String bairro) {
-        return repository.findByAlunosPorBairro(bairro);
-    }
+    // public List<Aluno> findAlunosPorBairro(String bairro) {
+    //     return repository.findAlunosPorBairro(bairro);
+    // }
 }

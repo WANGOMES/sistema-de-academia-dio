@@ -44,5 +44,16 @@ public class MatriculaServiceImpl implements IMatriculaService{
         repository.deleteById(id);
         
     }
+
+    public Matricula getMatricula(Long id_aluno) {
+        return repository.findByAlunoId(id_aluno);
+    }
     
+    public Boolean hasMatricula(Long id_aluno){
+        if(repository.findByAlunoId(id_aluno) != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

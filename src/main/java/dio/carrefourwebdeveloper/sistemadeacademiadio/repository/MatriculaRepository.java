@@ -7,5 +7,7 @@ import dio.carrefourwebdeveloper.sistemadeacademiadio.entity.Matricula;
 
 @Repository
 public interface MatriculaRepository extends JpaRepository<Matricula, Long>{
+
+    Matricula findByAlunoId(Long id_aluno);
     
 }

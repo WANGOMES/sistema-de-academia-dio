@@ -2,7 +2,7 @@ package dio.carrefourwebdeveloper.sistemadeacademiadio.entity.form;
 
 import java.time.LocalDate;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -16,11 +16,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class AlunoUpdateForm {
     
-    @NotBlank(message = "Preencha o campo corretamente.")
+    @NotEmpty(message = "Preencha o campo corretamente.")
     @Size(min = 3, max = 50,message = "'${validatedValue}' precisa estar entre {min} e {max} caracteres.")
     private String nome;
     
-    @NotBlank(message = "Preencha o campo corretamente.")
+    @NotEmpty(message = "Preencha o campo corretamente.")
     @Size(min = 3, max = 50,message = "'${validatedValue}' precisa estar entre {min} e {max} caracteres.")
     private String bairro;
     

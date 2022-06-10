@@ -44,4 +44,8 @@ public class MatriculaController {
         return service.getAll();
     }
     
+    @GetMapping("/aluno/{id_aluno}")
+    public Matricula getMatricula(@PathVariable Long id_aluno){
+        return service.getMatricula(id_aluno);
+    }
 }
